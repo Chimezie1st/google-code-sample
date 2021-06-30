@@ -15,8 +15,15 @@ class VideoPlayer:
 
     def show_all_videos(self):
         """Returns all videos."""
-
-        print("show_all_videos needs implementation")
+        #print("show_all_videos needs implementation")
+        
+        #needs to print title (video_id) [tags]
+        video_list = self._video_library.get_all_videos()
+        video_list.sort(key=lambda x: x.title)
+        print("Here's a list of all available videos:") #Print statement completed
+        for video in video_list: #Loop through txt file, read each video line by line
+            tagString = " ".join(video.tags) #convert to string, so that brackets can be stripped
+            print(video.title, "(", video.video_id, ")", "[",tagString.strip("()"), "]")
 
     def play_video(self, video_id):
         """Plays the respective video.
