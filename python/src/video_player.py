@@ -1,13 +1,16 @@
 """A video player class."""
 
 from .video_library import VideoLibrary
-
+import random
 
 class VideoPlayer:
     """A class used to represent a Video Player."""
 
     def __init__(self):
         self._video_library = VideoLibrary()
+        self._current_video = None
+        self.isPaused = False
+        self.isPlaying = False
 
     def number_of_videos(self):
         num_videos = len(self._video_library.get_all_videos())
@@ -27,21 +30,46 @@ class VideoPlayer:
 
     def play_video(self, video_id):
         """Plays the respective video.
-
+        
         Args:
             video_id: The video_id to be played.
         """
-        print("play_video needs implementation")
+        video = self._video_library.get_video(video_id)
+        if video:
+            print(f"Playing video: {video.title}")
+            self._current_video = video
+        else:
+            print("Cannot play video: Video does not exist")
+    
+
 
     def stop_video(self):
         """Stops the current video."""
+        current_video = self._current_video
+        if current_video:
+            print(f"Stopping video: {self._current_video.title}")
+            self._current_video = None
+        else:
+            print("Cannot play video: Video does not exist")
 
-        print("stop_video needs implementation")
 
     def play_random_video(self):
         """Plays a random video from the video library."""
+        getVideo = self._video_library.get_all_videos()  
+        num_videos = len(self._video_library.get_all_videos())  
 
-        print("play_random_video needs implementation")
+        if num_videos == 0:  
+            print("There are no videos available to play") 
+        else:
+            if self.isPlaying is True:
+                print("Stopping video:", self.currentVideo.title)
+                self.isPaused = False
+            pickVideo = random.choice(getVideo) 
+            print("Playing video:", pickVideo.title) 
+            self.isPlaying = True 
+            self.currentVideo = pickVideo  
+        
+        
 
     def pause_video(self):
         """Pauses the current video."""
