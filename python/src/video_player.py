@@ -9,8 +9,8 @@ class VideoPlayer:
     def __init__(self):
         self._video_library = VideoLibrary()
         self._current_video = None
-        self.isPaused = False
-        self.isPlaying = False
+        self.isPaused = False # Set paused video to False
+        self.isPlaying = False # Set playing video to False
 
     def number_of_videos(self):
         num_videos = len(self._video_library.get_all_videos())
@@ -34,7 +34,7 @@ class VideoPlayer:
         Args:
             video_id: The video_id to be played.
         """
-        video = self._video_library.get_video(video_id)
+        video = self._video_library.get_video(video_id)  
         if video:
             print(f"Playing video: {video.title}")
             self._current_video = video
@@ -55,17 +55,17 @@ class VideoPlayer:
 
     def play_random_video(self):
         """Plays a random video from the video library."""
-        getVideo = self._video_library.get_all_videos()  
-        num_videos = len(self._video_library.get_all_videos())  
+        getVideo = self._video_library.get_all_videos()  #Get all videos
+        num_videos = len(self._video_library.get_all_videos())  #This line checks if videos.txt is empty
 
-        if num_videos == 0:  
-            print("There are no videos available to play") 
+        if num_videos == 0:  #No videos in the .txt file
+            print("There are no videos available to play")   # Will need retrofit to fit flagged videos if I get to that stage
         else:
             if self.isPlaying is True:
                 print("Stopping video:", self.currentVideo.title)
                 self.isPaused = False
-            pickVideo = random.choice(getVideo) 
-            print("Playing video:", pickVideo.title) 
+            pickVideo = random.choice(getVideo) # Get Python to pick a random video in the list - import random
+            print("Playing video:", pickVideo.title) # Print the video title of what Python picked at random
             self.isPlaying = True 
             self.currentVideo = pickVideo  
         
