@@ -13,3 +13,7 @@ The language I used in this challenge was python.
 - Download the project
 - Set CMD/terminal address to project dictionary (cd PROJECT_PATH)
 - Run Command: python -m pytest
+
+## How to view my files
+- Open my google-code-sample/python folder
+- Go to src
